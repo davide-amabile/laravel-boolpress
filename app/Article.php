@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    public function author()
+    public function authors()
     {
-        return $this->belongTo('App\Author');
+        return $this->belongsTo('App\Author');
     }
 }
