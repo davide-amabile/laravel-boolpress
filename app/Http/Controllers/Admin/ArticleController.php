@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Auth;
 use App\Article;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
@@ -14,7 +15,10 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = Auth::id();
+
+        $articles = Article::where('user_id', $user_id)->get();
+        return view("admin.posts.index", compact("articles"));
     }
 
     /**
